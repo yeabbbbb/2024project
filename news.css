@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  justify-content: space-between;
+  padding: 0 calc(5% + 10px);
+  width: 100%;
+  padding-bottom: 50px;
+  box-sizing: border-box; /* padding과 border를 width에 포함 */
+  background-color: #0f0f0f;
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+}
+
+.header__logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header__menu {
+  display: flex;
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.header__menu li {
+  display: flex;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header__menu li a {
+  padding: 15px 2vw;
+  color: rgb(200, 200, 200);
+  transition: color 0.2s ease;
+}
+
+.header__menu li:hover a{
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.header__menu li:hover {
+  background-color: rgb(13, 110, 208);
+  cursor: pointer;
+}
+
+.header__right {
+  display: flex;
+  list-style: none;
+}
+
+.header__search {
+  cursor: pointer;
+  margin-right: 2vw;
+}
+
+.header__search img {
+  padding-top: 3px;
+  height: 20px;
+}
+
+.header__login {
+  background-color: rgb(14, 134, 255);
+  color: white;
+  padding: 7px 15px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.header__login:hover {
+  background-color: rgb(13, 110, 208);
+}
+
+.header__Btn {
+  display: none;
+  position: absolute;
+  align-items: center;
+  right: 4px;
+  top: 16px;
+  font-size: 12px;
+}
+
+.header__Btn a {
+  transition: color 0.2s ease;
+  padding: 10px 0;
+}
+
+.header__Btn a:hover {
+  color:rgb(14, 134, 255)
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  font-size: 1.15em;
+  transition: color 0.2s ease;
+}
+
+.category-date {
+  display: flex;
+  font-size: 0.8em;
+  padding: 2vw 0;
+}
+
+.category {
+  color: white;
+  font-weight: bold;
+  padding-right: 1em;
+  border-right: 1px solid #313131;
+}
+
+.date {
+  padding-left: 1em;
+  color: #8f8f8f;
+}
+
+.content {
+  font-size: 0.8em;
+  color: #8f8f8f;
+  padding: 1vw 0;
+}
+
+/* ###################################################################### */
+
+.header__menu li:first-child {
+  background-color: rgb(13, 110, 208);
+}
+
+.header__menu li:first-child a{
+  color: white;
+}
+
+.sub-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sub-menu li {
+  border-right: 1px solid #313131;
+  font-size: 1em;
+}
+
+.sub-menu li:last-child {
+  border: none;
+}
+
+.sub-menu li a {
+  padding: 5px 20px;
+  color: rgb(200, 200, 200);
+  transition: color 0.2s ease;
+}
+
+.sub-menu li:hover a{
+  color:rgb(14, 134, 255);
+  cursor: pointer;
+}
+
+.headline {
+  color: white;
+  padding-top: 40px;
+  width: 100%;
+}
+
+.headline__title {
+  font-size: 2em;
+  font-weight: bold;
+  border-left: 5px solid rgb(14, 134, 255);
+  padding-left: 15px;
+}
+
+.headline__news {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vw;
+  margin: 2vw 0;
+  padding: 0;
+  width: 100%;
+}
+
+.headline__item {
+  padding: 1.5vw 1.5vw;
+  border: 1px solid #313131;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.headline__item:hover .headline__item-title {
+  color: rgb(14, 134, 255)
+}
+
+.headline__item-title {
+  margin-bottom: auto;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: color 0.2s ease;
+}
+
+.headline-img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin-top: auto;
+}
+
+.more__news {
+  margin: 0 2%;
+  justify-content: space-between;
+  padding: 0;
+  width: 96%;
+}
+
+.more__item {
+  display: flex;
+  padding: 20px 20px;
+  border-bottom: 1px solid #313131;
+  cursor: pointer;
+}
+
+.more__item:hover .title {
+  color: rgb(14, 134, 255);
+}
+
+.more__item-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.more__item-info {
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+  .container {
+    padding: 0 calc(3% + 5px);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: green; */
+  }
+
+  .header__logo {
+    padding-bottom: 5px;
+  }
+
+  .header__menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header__menu li {
+    padding-left: 50vw;
+    padding-right: 50vw;
+    font-size: 1em;
+  }
+
+  .header__right {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .header__Btn {
+    display: block;
+    padding: 7px 0;
+  }
+
+  .header__menu.active,
+  .header__right.active {
+    display: flex;
+  }
+
+  .sub-menu {
+    justify-content: start;
+  }
+
+  .headline {
+    margin: 0;
+  }
+
+  .headline__title {
+    font-size: 1.7em;
+    border-left: 4px solid rgb(14, 134, 255);
+    padding-left: 12px;
+  }
+  
+  .headline__news {
+    width: 100%;
+  }
+
+  .headline__item-title {
+    font-size: 1.2em;
+  }
+
+  .more {
+    width: 100%;
+  }
+
+  .more__item-img {
+    width: 210px;
+    height: 140px;
+  }
+
+  .title {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+  .container {
+    padding: 0 calc(2% + 5px);
+  }
+
+  .sub-menu li{
+    font-size: 15px;
+  }
+
+  .headline__title {
+    font-size: 1.5em;
+  }
+
+  .headline__news {
+    grid-template-columns: 1fr;
+    width: 96.5%;
+    gap: 2vw;
+  }
+
+  .headline__item {
+    width: 100%;
+  }
+
+  .headline__item-title {
+    font-size: 1.2em;
+  }
+
+  .title {
+    font-size: 0.8em;
+  }
+
+  .category-date {
+    font-size: 0.5em;
+  }
+
+  .more__item {
+    padding: 10px 0;
+  }
+
+  .more__item-img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .more__item-info {
+    padding-top: 0;
+  }
+}
