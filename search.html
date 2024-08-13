@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="search.css">
+    <script src="search.js" defer></script>
+    <title>Search</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="header">
+            <div class="header__logo">
+                <a href="home.html">News Hub</a>
+            </div>
+    
+            <ul class="header__menu">
+                <li><a href="news.html">News</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Lifestyle</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Kids</a></li>
+            </ul>
+    
+            <div class="header__right">
+                <a href="search.html" class="header__search">
+                    <img src="images/magnifying-glass-icon.png" id="toggleButton" alt="Toggle Section">
+                </a>
+                <div class="header__login">
+                    <a href="login.html">LOGIN</a>
+                </div>
+            </div>
+    
+            <div class="header__Btn">
+              <a href="#">menu</a>
+            </div>
+        </nav>
+
+        <section class="search-form">
+            <form action="">
+                <div class="search-area">
+                    <input type="text" name="search-term" id="search-term" autocomplete="off" required>
+                    <label for="search-term">Please enter a search term.</label>
+                </div>
+                <div class="btn-area">
+                    <button id="btn" type="submit">SEARCH</button>
+                </div>
+            </form>
+        </section>
+</body>
+</html>

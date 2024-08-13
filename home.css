@@ -115,6 +115,7 @@ a {
   display: flex;
   padding-top: 10px;
   padding-bottom: 50px;
+  clear: both;
 }
 
 .main__board {
@@ -185,14 +186,12 @@ a {
 
 .main__top-news {
   width: 35%;
-  /* max-width: 35%;
-  min-width: 320px; */
   padding-left: 3vw;
   padding-top: 2.5vw;
  }
 
 .main__top-news ul {
-  list-style: none !important; /* 점 제거 */
+  list-style: none !important;
   padding-left: 1vw;
 }
 
@@ -259,7 +258,6 @@ a {
   justify-content: space-between;
   padding: 0;
   width: 96%;
-  /* flex: 1; */
 }
 
 .recommended-news-title {
@@ -297,7 +295,12 @@ a {
 
 .recommended__item-img {
   width: 15vw;
-  height: 15vw;
+  height: 14vw;
+  min-width: 15vw;
+  min-height: 14vw;
+  object-fit: cover; /* 이미지가 요소를 꽉 채우도록 하고 넘치는 부분은 잘라냄 */
+  object-position: center; /* 이미지의 중앙을 기준으로 잘라냄 */
+  display: block;
 }
 
 .recommended__item-info {
@@ -320,19 +323,23 @@ a {
   }
 
   .header {
-    flex-direction: column;
+    position: relative;
     align-items: flex-start;
   }
 
   .header__logo {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
 
   .header__menu {
     display: none;
+    position: absolute;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    top: 60px;
+    z-index: 9998;
+    background-color: #0f0f0f;
   }
 
   .header__menu li a {
@@ -342,15 +349,13 @@ a {
   }
 
   .header__right {
-    display: none;
-    justify-content: center;
-    width: 100%;
-    padding-top: 10px;
+    position: absolute;
+    right: 60px;
   }
 
   .header__Btn {
     display: block;
-    padding: 7px 0;
+    padding: 10px 0;
   }
 
   .header__menu.active,
@@ -403,8 +408,10 @@ a {
   }
 
   .recommended__item-img {
-    width: 200px;
-    height: 200px;
+    width: 23vw;
+    height: 21.5vw;
+    min-width: 23vw;
+    min-height: 21.5vw;
   }
 
   .recommended__item-info {
@@ -447,10 +454,5 @@ a {
   .recommended-news-title::before,
   .recommended-news-title::after {
     width: 25vw;
-  }
-
-  .recommended__item-img {
-    width: 150px;
-    height: 150px;
   }
 }
