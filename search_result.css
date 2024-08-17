@@ -9,7 +9,7 @@ body {
 
 .container {
   justify-content: space-between;
-  padding: 0 calc(5% + 10px);
+  padding: 0 10vw;
   width: 100%;
   padding-bottom: 50px;
   box-sizing: border-box; /* padding과 border를 width에 포함 */

@@ -9,7 +9,7 @@ body {
 
 .container {
   justify-content: space-between;
-  padding: 0 calc(5% + 10px);
+  padding: 0 10vw;
   width: 100%;
   padding-bottom: 50px;
   box-sizing: border-box; /* padding과 border를 width에 포함 */
@@ -294,10 +294,10 @@ a {
 }
 
 .recommended__item-img {
-  width: 15vw;
-  height: 14vw;
-  min-width: 15vw;
-  min-height: 14vw;
+  width: 10vw;
+  height: 10vw;
+  min-width: 10vw;
+  min-height: 10vw;
   object-fit: cover; /* 이미지가 요소를 꽉 채우도록 하고 넘치는 부분은 잘라냄 */
   object-position: center; /* 이미지의 중앙을 기준으로 잘라냄 */
   display: block;
