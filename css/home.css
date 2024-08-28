@@ -82,14 +82,20 @@ a {
 }
 
 .header__login {
+  padding: 0; margin: 0;
+  list-style: none;
+}
+
+.header__login button {
   background-color: rgb(14, 134, 255);
-  color: white;
+  border: none;
   padding: 7px 15px;
+  color: white;
   font-size: 11px;
   cursor: pointer;
 }
 
-.header__login:hover {
+.header__login button:hover {
   background-color: rgb(13, 110, 208);
 }
 
@@ -126,8 +132,14 @@ a {
   cursor: pointer;
 }
 
+.main__board a {
+  display: flex;
+}
+
 .board-img {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .board-title {
@@ -375,7 +387,7 @@ a {
   }
 
   .board-title {
-    font-size: 2em;
+    font-size: 30px;
   }
 
   .main__top-news {
@@ -400,11 +412,12 @@ a {
 
   .recommended__news {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .recommended-news-title::before,
   .recommended-news-title::after {
-    width: 30%;
+    width: 28%;
   }
 
   .recommended__item-img {
@@ -423,10 +436,15 @@ a {
 
   .container {
     padding: 0 calc(2% + 5px);
+    padding-bottom: 50px;
+  }
+
+  .header__menu li {
+    font-size: 12px;
   }
 
   .board-title {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   .category-date {
@@ -434,7 +452,7 @@ a {
   }
   
   .content {
-    font-size: 0.7em;
+    display: none;
   }
 
   .top-news-title,

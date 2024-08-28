@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Login</title>
 </head>
 <body>
     <section class="login-form">
         <h1><a href="home.html">News Hub</a></h1>
-        <form action="">
+        <form id="login-form" action="">
             <div class="int-area">
                 <input type="text" name="id" id="id" autocomplete="off" required>
                 <label for="id">ID</label>
@@ -47,7 +47,7 @@
             }
 
             var data = {
-                loginId: id,
+                login_id: id,
                 password: pw
             };
 
@@ -58,8 +58,10 @@
                 },
                 body: JSON.stringify(data)
             })
+            .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    localStorage.setItem('loggedIn', 'true');
                     window.location.href = 'home.html';
                 }
                 else {

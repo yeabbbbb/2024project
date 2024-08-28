@@ -82,14 +82,20 @@ a {
 }
 
 .header__login {
+  padding: 0; margin: 0;
+  list-style: none;
+}
+
+.header__login button {
   background-color: rgb(14, 134, 255);
-  color: white;
+  border: none;
   padding: 7px 15px;
+  color: white;
   font-size: 11px;
   cursor: pointer;
 }
 
-.header__login:hover {
+.header__login button:hover {
   background-color: rgb(13, 110, 208);
 }
 
@@ -138,16 +144,11 @@ a {
     display: none;
 }
 
-.main {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 50px;
-}
-
 .result {
-  width: 70%;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
 }
 
 .category-date {
@@ -190,13 +191,18 @@ a {
   display: flex;
   padding-bottom: 40px;
   align-items: center;
+  cursor: pointer;
+}
+
+.result__item a {
+  display: flex;
 }
 
 .result__item-image {
-  width: 280px;
-  height: 265px;
-  min-width: 19vw;
-  min-height: 265px;
+  width: 250px;
+  height: 240px;
+  min-width: 240px;
+  min-height: 235px;
   object-fit: cover; /* 이미지가 요소를 꽉 채우도록 하고 넘치는 부분은 잘라냄 */
   object-position: center; /* 이미지의 중앙을 기준으로 잘라냄 */
   display: block;
@@ -219,15 +225,16 @@ a {
 }
 
 .top-news {
-  width: 25%;
+  width: 100%;
   padding-top: 100px;
+  padding-bottom: 50px;
  }
 
 .top-news__title {
   position: relative;
   color: rgb(200, 200, 200);
   font-weight: bold;
-  font-size: 20px;
+  font-size: 23px;
   display: block;
   text-align: center;
   background: transparent;
@@ -240,7 +247,7 @@ a {
   top: 50%;
   height: 0.2em;
   background-color:rgb(14, 134, 255);
-  width: 25%;
+  width: 42%;
 }
 
 .top-news__title::before {
@@ -274,8 +281,44 @@ a {
   cursor: pointer;
 }
 
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+#pagination button {
+  padding: 12px 16px;
+  margin: 0 4px;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  border: none;
+  background-color: #313131;
+}
 
+#pagination button:hover {
+  background-color: rgb(14, 134, 255);
+}
+
+#page-num {
+  display: flex;
+  background-color: transparent;
+  color: white;
+}
+
+.page-num {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#pagination button.active {
+  background-color:rgb(14, 134, 255);
+}
+
+.page-num.active {
+  font-weight: bold;
+}
 
 
 
@@ -334,28 +377,19 @@ a {
       width: 100%;
     }
 
-    .main {
-      flex-direction: column;
-    }
-
     .result {
       width: 100%;
     }
 
     .result__item-image {
       width: 220px;
-      height: 200px;
-      min-width: 200px;
-      min-height: 19vw;
-    }
-
-    .top-news {
-      width: 100%;
-      padding-top: 10px;
+      height: 210px;
+      min-width: 220px;
+      min-height: 210px;
     }
 
     .top-news__title {
-      font-size: 15px;
+      font-size: 20px;
     }
 
     .top-news__title::before,
@@ -378,6 +412,10 @@ a {
       padding: 0 calc(2% + 5px);
     }
 
+    .header__menu li {
+      font-size: 12px;
+    }
+
     .category-date {
       padding-top: 15px;
     }
@@ -386,17 +424,19 @@ a {
       padding-top: 15px;
     }
 
+    .result {
+      padding: 0;
+    }
+    
     .result h1 {
       font-size: 23px;
     }
 
-    .result__item {
-      flex-direction: column;
-    }
-
     .result__item-image {
-      width: 100%;
-      height: 60vw;
+      width: 170px;
+      height: 160px;
+      min-width: 170px;
+      min-height: 160px;
     }
 
     .result__item {
@@ -406,11 +446,24 @@ a {
 
     .result__item-info {
       padding: 0;
-      padding-top: 25px;
+      padding-left: 13px;
+    }
+
+    .content {
+      font-size: 13px;
     }
 
     .result__item-title {
-      font-size: 21px;
+      font-size: 18px;
     }
 
+    .top-news {
+      padding-top: 50px;
+    }
+
+
+    .top-news__title::before,
+    .top-news__title::after {
+      width: 35%;
+    }
 }

@@ -82,14 +82,20 @@ a {
 }
 
 .header__login {
+  padding: 0; margin: 0;
+  list-style: none;
+}
+
+.header__login button {
   background-color: rgb(14, 134, 255);
-  color: white;
+  border: none;
   padding: 7px 15px;
+  color: white;
   font-size: 11px;
   cursor: pointer;
 }
 
-.header__login:hover {
+.header__login button:hover {
   background-color: rgb(13, 110, 208);
 }
 
@@ -221,6 +227,10 @@ a {
 
     .container {
       padding: 0 calc(2% + 5px);
+    }
+    
+    .header__menu li {
+      font-size: 12px;
     }
 
     .search-area {
