@@ -68,7 +68,7 @@ async function fetchHeadlineNews(category) {
                     : news.summary;
             
             const headlineNewsContainer = document.querySelector('.main__board');
-            headlineNewsContainer.innerHTML = `<a href="${news.url}">
+            headlineNewsContainer.innerHTML = `<a href="${news.url}" target="_blank" rel="noopener noreferrer">
                 <img src="${news.image_url}" class="board-img">
                 <div class="gradient-overlay"></div>
                 <div class="text-overlay">
@@ -119,7 +119,7 @@ async function fetchTopNews(category) {
                 listItem.classList.add('item');
 
                 listItem.innerHTML = `
-                <a href="${news.url}">
+                <a href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <span class="title">${news.title}</span>
                     <div class="category-date">
                         <span class="category">${news.category}</span>

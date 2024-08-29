@@ -90,7 +90,7 @@ async function fetchSearchResult(keyword, page) {
                 listItem.classList.add('result__item');
 
                 listItem.innerHTML = `
-                <a href="${news.url}">
+                <a href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <img src="${news.image_url}" class="result__item-image" alt="${news.title}">
                     <div class="result__item-info">
                         <span class="result__item-title">${news.title}</span>
@@ -201,7 +201,7 @@ async function fetchTopNews(category) {
                 listItem.classList.add('top-news__item');
 
                 listItem.innerHTML = `
-                <a href="${news.url}">
+                <a href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <span class="top-news__item-title">${news.title}</span>
                     <div class="category-date">
                         <span class="category">${news.category}</span>

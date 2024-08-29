@@ -74,7 +74,7 @@ async function fetchHeadlineNews(category) {
                 const listItem = document.createElement('li');
                 listItem.classList.add('headline__item');
 
-                listItem.innerHTML = `<a href="${news.url}">
+                listItem.innerHTML = `<a href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <div class="headline__item-info">
                         <span class="headline__item-title">${truncatedTitle}</span>
                         <div class="category-date">
@@ -134,7 +134,7 @@ async function fetchRecentNews(category, page) {
                 listItem.classList.add('recent__item');
 
                 listItem.innerHTML = `
-                <a href="${news.url}">
+                <a href="${news.url}" target="_blank" rel="noopener noreferrer">
                     <img src="${news.image_url}" class="recent__item-image">
                     <div class="recent__item-info">
                         <span class="recent__item-title">${news.title}</span>
