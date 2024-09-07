@@ -91,6 +91,32 @@ async function fetchHeadlineNews(category) {
 
                 topNewsContainer.appendChild(listItem);
             });
+
+            topNewsContainer.addEventListener('click', async (event) => {
+                const newsLink = event.target.closest('a');
+                if (newsLink) {
+                    const newsId = newsLink.getAttribute('data-news-id');
+
+                    try {
+                        const response = await fetch('http://localhost:8080/click-log', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ news_id: newsId })
+                        });
+
+                        if (!response.ok) {
+                            const errorMessage = `서버로 ID 전송 실패: ${response.status} - ${response.statusText}`;
+                            throw new Error(errorMessage);
+                        }
+
+                        console.log('ID 전송 성공:', newsId);
+                    } catch (error) {
+                        console.error('ID 전송 에러:', error.message);
+                    }
+                }
+            });
         } else {
             document.querySelector('.headline__news').innerHTML = 'No news items found.';
         }        
@@ -151,6 +177,32 @@ async function fetchRecentNews(category, page) {
             });
 
             more(totalPages, page);
+
+            resultContainer.addEventListener('click', async (event) => {
+                const newsLink = event.target.closest('a');
+                if (newsLink) {
+                    const newsId = newsLink.getAttribute('data-news-id');
+
+                    try {
+                        const response = await fetch('http://localhost:8080/click-log', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ news_id: newsId })
+                        });
+
+                        if (!response.ok) {
+                            const errorMessage = `서버로 ID 전송 실패: ${response.status} - ${response.statusText}`;
+                            throw new Error(errorMessage);
+                        }
+
+                        console.log('ID 전송 성공:', newsId);
+                    } catch (error) {
+                        console.error('ID 전송 에러:', error.message);
+                    }
+                }
+            });
         } else {
             document.querySelector('.result__news').innerHTML = 'No news items found.';
         }        
