@@ -10,7 +10,7 @@ function checkLoginStatus() {
         document.getElementById('login-button').style.display = 'none';
         document.getElementById('logout-button').style.display = 'block';
         console.log('ID:', localStorage.getItem('id'));
-        // fetchRecommendedNews('ALL');
+        fetchRecommendedNews('ALL');
     } else {
         document.getElementById('login-button').style.display = 'block';
         document.getElementById('logout-button').style.display = 'none';
@@ -21,7 +21,7 @@ function checkLoginStatus() {
 }
 
 function logout() {
-    fetch('http://52.78.41.92:8080/logout', {
+    fetch('/api/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ function logout() {
 
 async function fetchHeadlineNews(category) {
     try {
-        const url = new URL('http://52.78.41.92:8080/news/top');
+        const url = new URL('/api/news/top');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -96,7 +96,7 @@ async function fetchHeadlineNews(category) {
                         "news_id": newsId
                     }
 
-                    fetch('http://52.78.41.92:8080/click-log', {
+                    fetch('/api/click-log', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -129,7 +129,7 @@ async function fetchHeadlineNews(category) {
 
 async function fetchTopNews(category) {
     try {
-        const url = new URL('http://52.78.41.92:8080/news/top');
+        const url = new URL('/api/news/top');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -175,7 +175,7 @@ async function fetchTopNews(category) {
                     const newsId = newsLink.getAttribute('data-news-id');
 
                     try {
-                        const response = await fetch('http://52.78.41.92:8080/click-log', {
+                        const response = await fetch('/api/click-log', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -205,7 +205,7 @@ async function fetchTopNews(category) {
 
 async function fetchRecommendedNews(category) {
     try {
-        const url = new URL('http://52.78.41.92:8080/news/recommended');
+        const url = new URL('/api/news/recommended');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -254,7 +254,7 @@ async function fetchRecommendedNews(category) {
                     const newsId = newsLink.getAttribute('data-news-id');
 
                     try {
-                        const response = await fetch('http://52.78.41.92:8080/click-log', {
+                        const response = await fetch('/api/click-log', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
