@@ -16,7 +16,7 @@ function checkLoginStatus() {
 }
 
 function logout() {
-    fetch('http://localhost:8080/logout', {
+    fetch('http://52.78.41.92:8080/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ function Search() {
 
 async function fetchSearchResult(keyword, page) {
     try {
-        const url = new URL('http://localhost:8080/news/search');
+        const url = new URL('http://52.78.41.92:8080/news/search');
         const params = new URLSearchParams({ keyword, page });
         url.search = params.toString();
 
@@ -114,7 +114,7 @@ async function fetchSearchResult(keyword, page) {
                     const newsId = newsLink.getAttribute('data-news-id');
 
                     try {
-                        const response = await fetch('http://localhost:8080/click-log', {
+                        const response = await fetch('http://52.78.41.92:8080/click-log', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -198,7 +198,7 @@ function pagination(totalPages, currentPage) {
 
 async function fetchTopNews(category) {
     try {
-        const url = new URL('http://localhost:8080/news/top');
+        const url = new URL('http://52.78.41.92:8080/news/top');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -244,7 +244,7 @@ async function fetchTopNews(category) {
                     const newsId = newsLink.getAttribute('data-news-id');
 
                     try {
-                        const response = await fetch('http://localhost:8080/click-log', {
+                        const response = await fetch('http://52.78.41.92:8080/click-log', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'

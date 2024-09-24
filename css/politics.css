@@ -407,6 +407,7 @@ a {
 
     .container {
       padding: 0 calc(3% + 5px);
+      padding-bottom: 50px;
     }
   
     .header {
@@ -550,6 +551,7 @@ a {
   
     .container {
       padding: 0 calc(2% + 5px);
+      padding-bottom: 50px;
     }
   
     .header__menu li {

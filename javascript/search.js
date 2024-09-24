@@ -16,7 +16,7 @@ function checkLoginStatus() {
 }
 
 function logout() {
-    fetch('http://localhost:8080/logout', {
+    fetch('http://52.78.41.92:8080/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

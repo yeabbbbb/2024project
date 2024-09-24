@@ -9,14 +9,19 @@ function checkLoginStatus() {
     if (localStorage.getItem('loggedIn') === 'true') {
         document.getElementById('login-button').style.display = 'none';
         document.getElementById('logout-button').style.display = 'block';
+        console.log('ID:', localStorage.getItem('id'));
+        // fetchRecommendedNews('ALL');
     } else {
         document.getElementById('login-button').style.display = 'block';
         document.getElementById('logout-button').style.display = 'none';
+
+        const recommendedNewsContainer = document.querySelector('.recommended__news');
+        recommendedNewsContainer.innerHTML = '<span class="no-recommend">Please log in.</span>';
     }
 }
 
 function logout() {
-    fetch('http://localhost:8080/logout', {
+    fetch('http://52.78.41.92:8080/logout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -40,7 +45,7 @@ function logout() {
 
 async function fetchHeadlineNews(category) {
     try {
-        const url = new URL('http://localhost:8080/news/top');
+        const url = new URL('http://52.78.41.92:8080/news/top');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -84,26 +89,33 @@ async function fetchHeadlineNews(category) {
             headlineNewsContainer.addEventListener('click', async (event) => {
                 const newsLink = event.target.closest('a');
                 if (newsLink) {
-                    const newsId = newsLink.getAttribute('data-news-id');
+                    const newsId = news.id;
+                    console.log('newsId:', newsId);
 
-                    try {
-                        const response = await fetch('http://localhost:8080/click-log', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ news_id: newsId })
-                        });
-
-                        if (!response.ok) {
-                            const errorMessage = `서버로 ID 전송 실패: ${response.status} - ${response.statusText}`;
-                            throw new Error(errorMessage);
-                        }
-
-                        console.log('ID 전송 성공:', newsId);
-                    } catch (error) {
-                        console.error('ID 전송 에러:', error.message);
+                    var data = {
+                        "news_id": newsId
                     }
+
+                    fetch('http://52.78.41.92:8080/click-log', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data),
+                        credentials: 'include'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log('ID 전송 성공:', newsId);
+                        }
+                        else {
+                            console.log('ID 전송 실패:', data.message);
+                        }
+                    })
+                    .catch ((error) => {
+                        console.error('ID 전송 에러:', error, '-', error.message);
+                    });
                 }
             });
         } else {
@@ -117,7 +129,7 @@ async function fetchHeadlineNews(category) {
 
 async function fetchTopNews(category) {
     try {
-        const url = new URL('http://localhost:8080/news/top');
+        const url = new URL('http://52.78.41.92:8080/news/top');
         const params = new URLSearchParams({ category });
         url.search = params.toString();
 
@@ -163,7 +175,7 @@ async function fetchTopNews(category) {
                     const newsId = newsLink.getAttribute('data-news-id');
 
                     try {
-                        const response = await fetch('http://localhost:8080/click-log', {
+                        const response = await fetch('http://52.78.41.92:8080/click-log', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -188,6 +200,85 @@ async function fetchTopNews(category) {
     } catch (error) {
         console.error('Error:', error);
         document.querySelector('.top-news').innerHTML = 'Failed to load news.';
+    }
+}
+
+async function fetchRecommendedNews(category) {
+    try {
+        const url = new URL('http://52.78.41.92:8080/news/recommended');
+        const params = new URLSearchParams({ category });
+        url.search = params.toString();
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Fetched Data:', data);
+
+        if(data.success) {
+            const newsList = data.result.news.slice(6);
+            const recommendedNewsContainer = document.querySelector('.recommended__news');
+            recommendedNewsContainer.innerHTML = '';
+
+            newsList.forEach(news => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('recommended__item');
+
+                listItem.innerHTML = `
+                <a href="${news.url}" target="_blank" rel="noopener noreferrer" data-news-id="${news.id}">
+                    <img src="${news.image_url}" class="recommended__item-img">
+                    <div class="recommended__item-info">
+                        <span class="title">${news.title}</span>
+                        <div class="category-date">
+                            <span class="category">${news.category}</span>
+                            <span class="date">${new Date(news.publish_date).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </a>
+                `;
+
+                recommendedNewsContainer.appendChild(listItem);
+            });
+
+            recommendedNewsContainer.addEventListener('click', async (event) => {
+                const newsLink = event.target.closest('a');
+                if (newsLink) {
+                    const newsId = newsLink.getAttribute('data-news-id');
+
+                    try {
+                        const response = await fetch('http://52.78.41.92:8080/click-log', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ news_id: newsId })
+                        });
+
+                        if (!response.ok) {
+                            const errorMessage = `서버로 ID 전송 실패: ${response.status} - ${response.statusText}`;
+                            throw new Error(errorMessage);
+                        }
+
+                        console.log('ID 전송 성공:', newsId);
+                    } catch (error) {
+                        console.error('ID 전송 에러:', error.message);
+                    }
+                }
+            });
+        } else {
+            document.querySelector('.recommended__news').innerHTML = 'No news items found.';
+        }        
+    } catch (error) {
+        console.error('Error:', error);
+        document.querySelector('.recommended__news').innerHTML = 'Failed to load news.';
     }
 }
 

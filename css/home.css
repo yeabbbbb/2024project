@@ -122,6 +122,7 @@ a {
   padding-top: 10px;
   padding-bottom: 50px;
   clear: both;
+  overflow: hidden;
 }
 
 .main__board {
@@ -320,6 +321,14 @@ a {
   margin-left: 1vw;
 }
 
+.no-recommend {
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  grid-column: 1 / -1;
+}
+
 
 
 
@@ -332,6 +341,7 @@ a {
 
   .container {
     padding: 0 calc(3% + 5px);
+    padding-bottom: 50px;
   }
 
   .header {
